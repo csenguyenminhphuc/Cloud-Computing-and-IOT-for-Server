@@ -2,6 +2,15 @@
 
 ## Project Overview
 This project is a comprehensive IoT-based smart home system designed to monitor and control various environmental parameters and devices. It integrates multiple sensors, a camera module, and an IR remote control system, leveraging MQTT for communication, Node-RED for data processing, and Grafana for visualization. The system is deployed with a secure HTTPS setup using Nginx as a reverse proxy.
+## Members and roles
+**Phạm Gia Khánh And Nguyễn Thành Trọng**
+- Cấu hình và lập trình nhúng cho Esp8266, Esp32Cam, cảm biến, Led, xây dựng và triển khai model AI phát hiện người lạ, dự đoán cháy. Lập trình trực quan trên Node-red, đẩy dữ liệu dạng time series vào database Influxdb. Gửi cảnh báo lên Mezon, Telegram
+
+**Nguyễn Minh Phúc**
+- Cấu hình Windows server 2019, cài đặt phần mềm, deploy, cài đặt hệ thống mạng tường lửa port đồng thời giám sát và quản trị hệ thống (VPN, DHCP, DNS,....). Xây dựng các cơ chế bảo mật, hỗ trợ các thành viên sử dụng các công cụ và hỗ trợ lập trình. Tích hợp Gemini điều khiển qua giọng nói
+
+**Trương Mạnh Quỳnh And Bùi Như Ý**
+- Cấu hình và truy vấn dữ liệu từ Influxdb, trực quan hóa dữ liệu trên Grafana, phân tích và xây dựng mô hình dự đoán dữ liệu trên các cảm biến và đánh giá mô hình
 
 ## Features
 - **Sensor Monitoring**:
