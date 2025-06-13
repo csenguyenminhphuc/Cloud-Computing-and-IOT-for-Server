@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Admin - Hệ Thống AI Giám Sát Server</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="logo-container">
+                    <i class="fas fa-robot login-logo-icon"></i>
+                    <h1>AI Giám Sát Server</h1>
+                </div>
+                <p>Đăng nhập để truy cập vào hệ thống quản lý</p>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" id="username" name="username" placeholder="Tên đăng nhập" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+                    <div class="toggle-password">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Ghi nhớ đăng nhập</label>
+                    </div>
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                </div>
+                <button type="submit" class="login-btn">Đăng Nhập</button>
+                <div class="login-error" id="login-error"></div>
+            </form>
+            <div class="back-home">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Quay lại trang chủ</a>
+            </div>
+        </div>
+        <div class="system-info">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Quản Lý Server</h3>
+                <p>Truy cập vào các công cụ quản lý server để giám sát và điều khiển</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Bảo Mật Cao</h3>
+                <p>Hệ thống được bảo vệ bằng mã hóa và xác thực đa lớp</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Giám Sát Thời Gian Thực</h3>
+                <p>Xem dữ liệu và trạng thái server theo thời gian thực</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-dashboard" class="admin-dashboard hidden">
+        <div class="dashboard-header">
+            <div class="logo-container">
+                <i class="fas fa-robot dashboard-logo-icon"></i>
+            </div>
+            <button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
+        </div>
+        <div class="dashboard-body">
+            <div class="dashboard-sidebar">
+                <ul class="dashboard-menu">
+                    <li class="active">
+                        <a href="#" data-target="dashboard-home">
+                            <i class="fas fa-home"></i>
+                            <span>Tổng quan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="dashboard-nodered">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Node-RED</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="dashboard-ui">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="dashboard-influxdb">
+                            <i class="fas fa-database"></i>
+                            <span>InfluxDB</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="dashboard-grafana">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Grafana</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-target="dashboard-settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Cài đặt</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dashboard-content">
+                <div id="dashboard-home" class="dashboard-panel active">
+                    <h3>Chào mừng đến với bảng điều khiển Admin</h3>
+                    <p>Truy cập vào các chức năng hệ thống từ menu bên trái.</p>
+                    
+                    <div class="admin-info-banner">
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="admin-details">
+                            <h4 id="admin-fullname">Nguyễn Minh Phúc</h4>
+                            <p id="admin-position">Kỹ sư Khoa Học Máy tính</p>
+                            <p id="admin-bio">Đam mê quản trị hệ thống, AI, bảo mật và phân tích dữ liệu.</p>
+                            <div class="admin-contact">
+                                <span><i class="fas fa-envelope"></i> <span id="admin-email">phucadmin@gmail.com</span></span>
+                                <span><i class="fas fa-phone"></i> <span id="admin-phone">0123456789</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Servers</h4>
+                                <p>5 online</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Nhiệt độ TB</h4>
+                                <p>24.5°C</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>CPU Load</h4>
+                                <p>32%</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-hdd"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Lưu trữ</h4>
+                                <p>42% đã dùng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="dashboard-nodered" class="dashboard-panel">
+                    <div class="iframe-container fullscreen-clean">
+                        <iframe src="https://ateamiuh.me/nodered" title="Node-RED Interface"></iframe>
+                    </div>
+                </div>
+                
+                <div id="dashboard-ui" class="dashboard-panel">
+                    <h3>Dashboard</h3>
+                    <p>Bảng điều khiển trực quan để theo dõi và kiểm soát hệ thống của bạn</p>
+                    <div class="service-link-container">
+                        <a href="https://ateamiuh.me/ui" target="_blank" class="service-btn">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Mở Dashboard trong tab mới</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="dashboard-influxdb" class="dashboard-panel">
+                    <h3>InfluxDB</h3>
+                    <p>Cơ sở dữ liệu chuỗi thời gian để lưu trữ và truy vấn dữ liệu từ hệ thống</p>
+                    <div class="service-link-container">
+                        <a href="https://ateamiuh.me:8086" target="_blank" class="service-btn">
+                            <i class="fas fa-database"></i>
+                            <span>Mở InfluxDB trong tab mới</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="dashboard-grafana" class="dashboard-panel">
+                    <h3>Grafana</h3>
+                    <p>Nền tảng phân tích và trực quan hóa dữ liệu mạnh mẽ</p>
+                    <div class="service-link-container">
+                        <a href="https://ateamiuh.me:3000" target="_blank" class="service-btn">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Mở Grafana trong tab mới</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="dashboard-settings" class="dashboard-panel">
+                    <h3>Cài đặt tài khoản</h3>
+                    <p>Cập nhật thông tin cá nhân và thay đổi mật khẩu</p>
+                    
+                    <div class="settings-container">
+                        <div class="settings-section">
+                            <h4>Thông tin cá nhân</h4>
+                            <form id="profile-form" class="settings-form">
+                                <div class="form-group">
+                                    <label for="settings-username">Tên đăng nhập</label>
+                                    <input type="text" id="settings-username" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-fullname">Họ và tên</label>
+                                    <input type="text" id="settings-fullname" value="Nguyễn Minh Phúc" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-position">Vị trí</label>
+                                    <input type="text" id="settings-position" value="Kỹ sư Khoa Học Máy tính" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-phone">Số điện thoại</label>
+                                    <input type="tel" id="settings-phone" value="0123456789">
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-email">Email</label>
+                                    <input type="email" id="settings-email" value="phucadmin@gmail.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-bio">Giới thiệu</label>
+                                    <textarea id="settings-bio" rows="3">Đam mê quản trị hệ thống, AI, bảo mật và phân tích dữ liệu.</textarea>
+                                </div>
+                                <button type="submit" class="btn primary-btn">Cập nhật thông tin</button>
+                                <div id="profile-update-message" class="update-message"></div>
+                            </form>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Thay đổi mật khẩu</h4>
+                            <form id="password-form" class="settings-form">
+                                <div class="form-group">
+                                    <label for="current-password">Mật khẩu hiện tại</label>
+                                    <input type="password" id="current-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">Mật khẩu mới</label>
+                                    <input type="password" id="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Xác nhận mật khẩu mới</label>
+                                    <input type="password" id="confirm-password" required>
+                                </div>
+                                <button type="submit" class="btn primary-btn">Đổi mật khẩu</button>
+                                <div id="password-update-message" class="update-message"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="login.js"></script>
+</body>
+</html> 

@@ -1,0 +1,9 @@
+facenet-pytorch 
+deepface 
+torchvision 
+opencv-python 
+matplotlib 
+scikit-learn
+face-alignment
+fastapi
+uvicorn[standard]
